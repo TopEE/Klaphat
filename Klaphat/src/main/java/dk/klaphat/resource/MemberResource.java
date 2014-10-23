@@ -50,11 +50,13 @@ public class MemberResource {
     }
     
     
-    /*
+  
     @GET
     @Path("/{id}")
-    public Member getMember(@PathParam(name="id") String id) {
-        return new Member();
+    public Member getMemberById(@PathParam("id") String idStr) {
+       long id = Long.parseLong(idStr);
+       Query q = em.createNamedQuery("Member.memberById");
+       return (Member) q.setParameter("id", id).getSingleResult();
     }
-    */
+ 
 }
