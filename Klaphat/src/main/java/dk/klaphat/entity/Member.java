@@ -18,7 +18,7 @@ import javax.persistence.NamedQuery;
  * @author IEUser
  */
 @Entity
-@NamedQueries({@NamedQuery(name = "Member.all", query="SELECT e FROM Member e")})
+@NamedQueries({@NamedQuery(name = "Member.all", query="SELECT e FROM Member e")})  //, @NamedQuery(name = "Member.memberById", query="SELECT e FROM Member e WHERE e.id LIKE :id")
 public class Member implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
