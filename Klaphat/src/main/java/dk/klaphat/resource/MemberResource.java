@@ -49,14 +49,38 @@ public class MemberResource {
         return q.getResultList();
     }
     
-    
-  
+      
     @GET
-    @Path("/{id}")
+    @Path("id/{id}")
     public Member getMemberById(@PathParam("id") String idStr) {
-       long id = Long.parseLong(idStr);
-       Query q = em.createNamedQuery("Member.memberById");
-       return (Member) q.setParameter("id", id).getSingleResult();
+       try {
+            long id = Long.parseLong(idStr);
+            Query q = em.createNamedQuery("Member.memberById");
+            q.setParameter("id", id);           
+            List<Member> list = q.getResultList();
+            if(list.size() > 0) {               
+                return list.get(0);
+            }
+           
+       } catch(Exception e) {
+           e.printStackTrace();
+       }
+       
+       //return (Member) q.setParameter("id", id).getSingleResult();
+       return null;
+    }
+    
+    @GET
+    @Path("name/{name}")
+    public Member getMemberByName(@PathParam("name") String name) {
+        Query q = em.createNamedQuery("Member.memberByName");
+        q.setParameter("name", name);
+        List<Member> list = q.getResultList();
+        if(list.size()> 0) {
+            return list.get(0);
+        }
+        
+        return null;
     }
  
 }
