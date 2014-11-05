@@ -87,7 +87,4 @@ public class MemberResource {
         return null;
     }
  
-    public void dummy() {
-        System.out.println("Hej");
-    }
 }
