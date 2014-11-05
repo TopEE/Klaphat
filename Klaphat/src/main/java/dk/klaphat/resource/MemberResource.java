@@ -35,6 +35,9 @@ public class MemberResource {
         m2.setName("ACG");
         Member m3 = new Member();
         m3.setName("EKY");
+        Member m4 = new Member();
+        m4.setName("LAJ");
+    
                 
         em.merge(m1);
         em.merge(m2);
