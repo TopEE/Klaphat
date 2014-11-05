@@ -37,11 +37,11 @@ public class MemberResource {
         m3.setName("EKY");
         Member m4 = new Member();
         m4.setName("LAJ");
-    
-                
+        
         em.merge(m1);
         em.merge(m2);
         em.merge(m3);
+        em.merge(m4);
         return "done init";
     }
     
