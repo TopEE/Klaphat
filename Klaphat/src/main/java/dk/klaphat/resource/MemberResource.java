@@ -49,7 +49,8 @@ public class MemberResource {
         return q.getResultList();
     }
     
-      
+    
+  
     @GET
     @Path("id/{id}")
     public Member getMemberById(@PathParam("id") String idStr) {
