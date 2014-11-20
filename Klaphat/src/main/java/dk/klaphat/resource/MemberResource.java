@@ -6,7 +6,6 @@
 package dk.klaphat.resource;
 
 import dk.klaphat.entity.Member;
-import dk.klaphat.entity.MorgenmadGruppe;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -26,7 +25,7 @@ import javax.ws.rs.PathParam;
 public class MemberResource {
     @PersistenceContext(name="default")
     EntityManager em;
-   // EntityManager mg;
+    
     @GET
     @Path("init")
     public String init() {        
@@ -43,24 +42,11 @@ public class MemberResource {
         em.merge(m2);
         em.merge(m3);
         em.merge(m4);
-        MorgenmadGruppe MG = new MorgenmadGruppe();
-        MG.setId("Primo");
-        MG.setGruppeNavn("Primo");
-        em.merge(MG);
         return "done init";
     }
     
-    
     @GET
-    @Path("MorgenMadGruppe")
-    public List<MorgenmadGruppe> getMorgenmadGruppe() {
-        Query q = em.createNamedQuery("MorgenmadGruppe.all");
-        return q.getResultList();
-    }
-    
-    
-    @GET
-    @Path("List")
+    @Path("/")
     public List<Member> getMembers() {
         Query q = em.createNamedQuery("Member.all");
         return q.getResultList();
